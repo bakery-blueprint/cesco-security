@@ -1,4 +1,4 @@
-package com.github.bakery.cesco;
+package com.github.bakery.cesco.week01;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

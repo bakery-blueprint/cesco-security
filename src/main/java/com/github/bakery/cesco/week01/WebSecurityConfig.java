@@ -1,6 +1,7 @@
-package com.github.bakery.cesco;
+package com.github.bakery.cesco.week01;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,5 +20,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin();
         http.httpBasic();
     }
+
+    /**
+     * TODO 1주차 과제
+     * ADMIN / USER Role 각각 InMemory 로 생성하자..!!
+     */
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+    }
+
 
 }
