@@ -41,6 +41,54 @@ UserDetailsServiceAutoConfiguration에서도 UserDetailsService 해당 Bean이 �
 자동 설정을 하지 않는다.
 
 
+### Password Encoding 
+
+DelegatingPasswordEncoder 해당 클래스에 의해 encoding을 한다.
+
+PasswordEncoderFactories 에 의해서 설정된다.
+ 
+DelegatingPasswordEncoder 내부 기본 전략으로 UnmappedIdPasswordEncoder을 갖고 있지만
+
+실제 기본 전략은 "bcrypt" 을 사용한다. 
+
+근데 신기한 점은 matches 할 때 extractId을 통해 PasswordEncoder를 찾는데 없으면 UnmappedIdPasswordEncoder가 
+
+처리한다. 이 과정에서 무조건 Throw를 날린다..!! 
+
+
+WebSecurityConfigurerAdapter.setApplicationContext 에서  
+
+LazyPasswordEncoder passwordEncoder = new LazyPasswordEncoder(context); 
+
+있기 때문에 setApplicationContext을 오버라이딩 해버리면... 문제가 생긴다.
+
+
+~~~java
+	@Autowired
+	public void setApplicationContext(ApplicationContext context) {
+		this.context = context;
+
+		ObjectPostProcessor<Object> objectPostProcessor = context.getBean(ObjectPostProcessor.class);
+		LazyPasswordEncoder passwordEncoder = new LazyPasswordEncoder(context);
+
+		authenticationBuilder = new DefaultPasswordEncoderAuthenticationManagerBuilder(objectPostProcessor, passwordEncoder);
+		localConfigureAuthenticationBldr = new DefaultPasswordEncoderAuthenticationManagerBuilder(objectPostProcessor, passwordEncoder) {
+			@Override
+			public AuthenticationManagerBuilder eraseCredentials(boolean eraseCredentials) {
+				authenticationBuilder.eraseCredentials(eraseCredentials);
+				return super.eraseCredentials(eraseCredentials);
+			}
+
+			@Override
+			public AuthenticationManagerBuilder authenticationEventPublisher(AuthenticationEventPublisher eventPublisher) {
+				authenticationBuilder.authenticationEventPublisher(eventPublisher);
+				return super.authenticationEventPublisher(eventPublisher);
+			}
+		};
+	}
+
+~~~
+
 
 
 

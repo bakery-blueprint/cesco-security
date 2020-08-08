@@ -22,4 +22,8 @@ public class AccountService implements UserDetailsService {
                                                     .build())
                                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }
+
+    public Account save(final Account account) {
+        return accountRepository.save(account);
+    }
 }

@@ -16,4 +16,9 @@ public class Account {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    public Account encodingPassword() {
+        setPassword("{noop}" + getPassword());
+        return this;
+    }
 }
