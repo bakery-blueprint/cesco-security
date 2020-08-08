@@ -34,7 +34,11 @@ WebSecurityConfigurerAdapter extends 하면서 Custom Config을 할 수 있다.
 만약 WebSecurityConfigurerAdapter Bean이 존재할 경우 기본 설정을 하지 않는다. 
 
 
+### UserDetailsService
 
+UserDetailsServiceAutoConfiguration에서도 UserDetailsService 해당 Bean이 존재하면 
+
+자동 설정을 하지 않는다.
 
 
 
