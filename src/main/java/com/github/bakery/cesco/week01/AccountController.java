@@ -3,10 +3,7 @@ package com.github.bakery.cesco.week01;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/account")
 @RestController
@@ -17,5 +14,10 @@ public class AccountController {
     @PostMapping
     public ResponseEntity<Account> create(@RequestBody Account account) {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.save(account));
+    }
+
+    @GetMapping("/id")
+    public ResponseEntity<Account> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(accountService.findById(id));
     }
 }

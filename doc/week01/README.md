@@ -56,38 +56,14 @@ DelegatingPasswordEncoder 내부 기본 전략으로 UnmappedIdPasswordEncoder�
 처리한다. 이 과정에서 무조건 Throw를 날린다..!! 
 
 
-WebSecurityConfigurerAdapter.setApplicationContext 에서  
+InitializeUserDetailsBeanManagerConfigurer.configure
 
-LazyPasswordEncoder passwordEncoder = new LazyPasswordEncoder(context); 
+PasswordEncoder passwordEncoder = getBeanOrNull(PasswordEncoder.class); 에서 
 
-있기 때문에 setApplicationContext을 오버라이딩 해버리면... 문제가 생긴다.
+PasswordEncoder가 존재하지 않으면 역시나 PasswordEncoderFactories.createDelegatingPasswordEncoder 전략을 사용한다.
 
 
-~~~java
-	@Autowired
-	public void setApplicationContext(ApplicationContext context) {
-		this.context = context;
 
-		ObjectPostProcessor<Object> objectPostProcessor = context.getBean(ObjectPostProcessor.class);
-		LazyPasswordEncoder passwordEncoder = new LazyPasswordEncoder(context);
-
-		authenticationBuilder = new DefaultPasswordEncoderAuthenticationManagerBuilder(objectPostProcessor, passwordEncoder);
-		localConfigureAuthenticationBldr = new DefaultPasswordEncoderAuthenticationManagerBuilder(objectPostProcessor, passwordEncoder) {
-			@Override
-			public AuthenticationManagerBuilder eraseCredentials(boolean eraseCredentials) {
-				authenticationBuilder.eraseCredentials(eraseCredentials);
-				return super.eraseCredentials(eraseCredentials);
-			}
-
-			@Override
-			public AuthenticationManagerBuilder authenticationEventPublisher(AuthenticationEventPublisher eventPublisher) {
-				authenticationBuilder.authenticationEventPublisher(eventPublisher);
-				return super.authenticationEventPublisher(eventPublisher);
-			}
-		};
-	}
-
-~~~
 
 
 

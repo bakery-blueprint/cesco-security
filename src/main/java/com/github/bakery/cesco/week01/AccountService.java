@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 @Service
 @RequiredArgsConstructor
 public class AccountService implements UserDetailsService {
@@ -25,5 +27,18 @@ public class AccountService implements UserDetailsService {
 
     public Account save(final Account account) {
         return accountRepository.save(account);
+    }
+
+    public Account findById(final Long id) {
+        return accountRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Cannot found account id : " + id));
+    }
+
+    @PostConstruct
+    public void init() {
+        final Account account = new Account();
+        account.setUsername("hello");
+        account.setPassword("1234");
+        account.setRole(Role.USER);
+        save(account);
     }
 }
