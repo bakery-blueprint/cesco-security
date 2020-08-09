@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestConstructor;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -47,6 +48,7 @@ class AccountControllerTest {
     /**
      * TODO 1주차 과제
      * 1. 201 응답이 오도록 변경해보자.
+     * Hint wit user
      */
     @Disabled
     @Test
