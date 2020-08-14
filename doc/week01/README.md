@@ -161,6 +161,10 @@ MockMvc with으로 명시적으로 user / role을 정할 수 있고 WithMockUser
 
 
 
+## 과제 
+
+AccountControllerTest 해결  -> PasswordEncoder로 인코딩을 해야한다. 
+
 
 
 

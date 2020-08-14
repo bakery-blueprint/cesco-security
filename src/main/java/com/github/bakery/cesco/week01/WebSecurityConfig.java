@@ -29,13 +29,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
         http.csrf().disable();
     }
-
-    /**
-     * TODO 1주차 과제
-     * ADMIN / USER Role 각각 InMemory 로 생성하자..!!
-     */
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//
-//    }
-
 }
