@@ -16,7 +16,7 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.save(account));
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Account> findById(@PathVariable Long id) {
         return ResponseEntity.ok(accountService.findById(id));
     }

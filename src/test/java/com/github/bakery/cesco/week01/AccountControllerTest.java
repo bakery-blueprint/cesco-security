@@ -2,7 +2,6 @@ package com.github.bakery.cesco.week01;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +9,13 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestConstructor;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -44,13 +49,6 @@ class AccountControllerTest {
                .andExpect(status().isCreated());
     }
 
-
-    /**
-     * TODO 1주차 과제
-     * 1. 201 응답이 오도록 변경해보자.
-     * Hint wit user
-     */
-    @Disabled
     @Test
     void find() throws Exception {
         // given
@@ -62,27 +60,23 @@ class AccountControllerTest {
         final Account saved = accountService.save(account);
 
         // when then
-        mockMvc.perform(get("/account/" + saved.getId()))
+        mockMvc.perform(get("/account/" + saved.getId()).with(user("hotire").roles("USER")))
                .andDo(print())
-               .andExpect(status().isCreated());
+               .andExpect(status().isOk());
     }
 
-    /**
-     * TODO 1주차 과제
-     * 1. login을 검증하자.
-     */
-    @Disabled
     @Test
     void login() throws Exception {
         // given
         final Account account = new Account();
-        account.setUsername("hello");
+        account.setUsername(UUID.randomUUID().toString());
         account.setPassword("1234");
         account.setRole(Role.USER);
 
         final Account saved = accountService.save(account);
 
-        // Hint SecurityMockMvcRequestBuilders.formLogin() 을 통해 검증
+        mockMvc.perform(formLogin().user(saved.getUsername()).password("1234"))
+               .andExpect(authenticated());
     }
 
 
