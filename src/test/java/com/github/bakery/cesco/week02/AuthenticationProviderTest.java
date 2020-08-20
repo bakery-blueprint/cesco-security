@@ -68,4 +68,17 @@ class AuthenticationProviderTest {
                .andDo(print())
                .andExpect(status().isOk());
     }
+
+    // TODO : 2주차 과제 AccessDeniedHandler 테스트
+    // AccessDeniedException이 발생했을 때 기본값이 403이지만, 4003을 내려줄 수 있게 변경해보자.
+
+    @Test
+    @Disabled
+    void accessDeniedTest() throws Exception {
+        // when then
+        mockMvc.perform(get("/week02/accessDenied")
+                                .contentType(MediaType.APPLICATION_JSON))
+               .andDo(print())
+               .andExpect(status().is(4003));
+    }
 }

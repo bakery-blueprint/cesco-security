@@ -20,16 +20,30 @@ public class Week02SecurityConfig extends WebSecurityConfigurerAdapter {
      * hint : RoleHierarchyVoter
      */
 
+//    @Bean
+//    AuthenticationProvider authenticationProvider() {
+//        return new DaoAuthenticationProvider();
+//    }
+
     /*
-     * TODO: 2주차 과제 AccessDeniedHandler를 추가하여, error response를 변경해보기.
+     * TODO: 2주차 과제 Custom AccessDeniedHandler를 추가하여, error response를 변경해보기.
      */
+
+//    @Bean
+//    AccessDeniedHandler accessDeniedHandler() {
+//        return new AccessDeniedHandlerImpl();
+//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/week02/**")
             // hint : AbstractUserDetailsAuthenticationProvider
 //            .authenticationProvider()
+            // hint : access denied handler
+//            .exceptionHandling().accessDeniedHandler(accessDeniedHandler()).and()
             .authorizeRequests()
             .antMatchers("/week02/user").hasAnyRole("USER")
+            .mvcMatchers("/week02/accessDenied").hasRole("ACCESS_DENIED")
             .anyRequest()
             .authenticated()
             .and()

@@ -28,4 +28,9 @@ public class Week02Controller {
     public ResponseEntity<String> user(Principal principal) {
         return ResponseEntity.ok(principal.getName());
     }
+
+    @GetMapping("/accessDenied")
+    public ResponseEntity<String> accessDenied() {
+        return ResponseEntity.ok("accessDenied");
+    }
 }
