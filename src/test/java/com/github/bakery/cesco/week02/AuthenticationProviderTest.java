@@ -56,7 +56,7 @@ class AuthenticationProviderTest {
 
     // TODO : 2주차 과제 AccessDecisionManager 테스트
     // "/week02/user"로 ADMIN Role을 가진 유저가 접근했을 때도 isOk가 될 수 있게 변경해보자.
-    // hint : SecurityFilterChain
+    // hint : RoleHierarchyVoter
     @Test
     @Disabled
     @WithMockUser(username = "week02", roles = "ADMIN")

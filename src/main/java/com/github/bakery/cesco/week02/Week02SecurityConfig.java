@@ -2,9 +2,11 @@ package com.github.bakery.cesco.week02;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 
 /*
  * TODO : 2주차 과제 authenticationManager
@@ -20,7 +22,16 @@ public class Week02SecurityConfig extends WebSecurityConfigurerAdapter {
      * hint : RoleHierarchyVoter
      */
 
-//    @Bean
+    DefaultWebSecurityExpressionHandler expressionHandler() {
+        final DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
+        final RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        // 해당 값을 넣을 때 포맷이 정해져 있고 ROLE_ 가 필수
+        // 일반 포맷 "high > low", 2개 넣을려면 "\n" 구분자로 split 한다.
+//        roleHierarchy.setHierarchy();
+        handler.setRoleHierarchy(roleHierarchy);
+        return handler;
+    }
+
 //    AuthenticationProvider authenticationProvider() {
 //        return new DaoAuthenticationProvider();
 //    }
@@ -29,7 +40,6 @@ public class Week02SecurityConfig extends WebSecurityConfigurerAdapter {
      * TODO: 2주차 과제 Custom AccessDeniedHandler를 추가하여, error response를 변경해보기.
      */
 
-//    @Bean
 //    AccessDeniedHandler accessDeniedHandler() {
 //        return new AccessDeniedHandlerImpl();
 //    }
@@ -46,6 +56,7 @@ public class Week02SecurityConfig extends WebSecurityConfigurerAdapter {
             .mvcMatchers("/week02/accessDenied").hasRole("ACCESS_DENIED")
             .anyRequest()
             .authenticated()
+//            .expressionHandler(expressionHandler())
             .and()
             .csrf().disable();
     }
