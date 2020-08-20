@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestConstructor;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -48,6 +49,21 @@ class AuthenticationProviderTest {
 
         // when then
         mockMvc.perform(get("/week02/second")
+                                .contentType(MediaType.APPLICATION_JSON))
+               .andDo(print())
+               .andExpect(status().isOk());
+    }
+
+    // TODO : 2주차 과제 AccessDecisionManager 테스트
+    // "/week02/user"로 ADMIN Role을 가진 유저가 접근했을 때도 isOk가 될 수 있게 변경해보자.
+    // hint : SecurityFilterChain
+    @Test
+    @Disabled
+    @WithMockUser(username = "week02", roles = "ADMIN")
+    void userTest() throws Exception {
+
+        // when then
+        mockMvc.perform(get("/week02/user")
                                 .contentType(MediaType.APPLICATION_JSON))
                .andDo(print())
                .andExpect(status().isOk());

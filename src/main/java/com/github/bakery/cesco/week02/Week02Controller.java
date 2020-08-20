@@ -23,4 +23,9 @@ public class Week02Controller {
 
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<String> user(Principal principal) {
+        return ResponseEntity.ok(principal.getName());
+    }
 }

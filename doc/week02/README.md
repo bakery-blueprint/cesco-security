@@ -9,9 +9,9 @@
 - [FilterChainProxy](https://kangwoojin.github.io/programing/spring-security-basic-filter-chain-proxy/)
 
 ## AccessDecisionManager
+## FilterSecurityInterceptor
 - [AccessDecisionManager](https://kangwoojin.github.io/programing/spring-security-basic-access-decision-manager/)
 
-## FilterSecurityInterceptor
 ## ExceptionTranslationFilter
 - [ExceptionTranslationFilter](https://kangwoojin.github.io/programing/spring-security-basic-exception-translation-filter/)
 ## 스프링 시큐리티 아키텍처 정리
