@@ -1,6 +1,7 @@
 package com.github.bakery.cesco.week01;
 
 import lombok.Data;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -17,8 +18,8 @@ public class Account {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    public Account encodingPassword() {
-        setPassword("{noop}" + getPassword());
+    public Account encodingPassword(PasswordEncoder encoder) {
+        setPassword(encoder.encode(password));
         return this;
     }
 }
