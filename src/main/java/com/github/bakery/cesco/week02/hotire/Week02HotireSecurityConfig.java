@@ -21,8 +21,8 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
-@EnableWebSecurity
+//@Order(Ordered.HIGHEST_PRECEDENCE)
+//@EnableWebSecurity
 public class Week02HotireSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
