@@ -63,31 +63,10 @@ WebAsyncUtils.getAsyncManager(webRequest).startCallableProcessing(callable, mavC
 
 startCallableProcessing의 내부에서 taskExecutor을 사용해서 submit 하는 것이 나온다..!!
 
-### AsyncAnnotationBeanPostProcessor
 
-AsyncAnnotationBeanPostProcessor setBeanFactory 순간에 advisor 을 AsyncAnnotationAdvisor로 설정한다.
+## Enable Async
 
-AsyncAnnotationAdvisor 친구는 AnnotationAsyncExecutionInterceptor 를 설정해준다. 
-
-AsyncExecutionInterceptor 의 구현체이기 떄문에 AsyncExecutionInterceptor의 invoke를 통해 async가 실행된다.
-
-
-### AOP
-
-@Asepect 동작 원리과 다르지만 (AnnotationAwareAspectJAutoProxyCreator 훨씬 복잡하다.)
-
-아무튼.. 결국 끝까지 내려가면 DefaultAopProxyFactory createAopProxy을 통해 AOP가 생성된다. 
-
-여기서 볼수있는 꿀팁들이 많다.
-
-
-
-
-
-
-
-
-
+https://blog.naver.com/gngh0101/222073112894
 
 ## 과제 
 
