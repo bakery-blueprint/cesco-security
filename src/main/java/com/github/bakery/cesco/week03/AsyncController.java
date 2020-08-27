@@ -15,9 +15,11 @@ import java.util.concurrent.Callable;
 @RequiredArgsConstructor
 public class AsyncController {
     private final AccountService accountService;
+    private final AsyncService asyncService;
 
     @GetMapping("/callable")
     public Callable<String> callable() {
+        asyncService.async();
         return () -> {
             log.info("callable");
             return "hello";
