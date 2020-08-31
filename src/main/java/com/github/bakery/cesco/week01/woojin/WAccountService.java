@@ -1,19 +1,16 @@
 package com.github.bakery.cesco.week01.woojin;
 
-import javax.annotation.PostConstruct;
-
+import com.github.bakery.cesco.week01.Role;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
-import com.github.bakery.cesco.week01.Role;
+import javax.annotation.PostConstruct;
 
-import lombok.RequiredArgsConstructor;
-
-@Service
+//@Service
 @RequiredArgsConstructor
 public class WAccountService implements UserDetailsService {
     private final WAccountRepository WAccountRepository;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping("/woojin/account")
-@RestController
+//@RestController
 @RequiredArgsConstructor
 public class WAccountController {
     private final WAccountService WAccountService;

@@ -4,7 +4,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 public class Week02UserDetailsService implements UserDetailsService {
     @Override
@@ -15,7 +14,7 @@ public class Week02UserDetailsService implements UserDetailsService {
 
         return User.builder()
                    .username(username)
-                   .password("123").passwordEncoder(password -> NoOpPasswordEncoder.getInstance().encode(password))
+                   .password("{noop}123")
                    .roles("ADMIN")
                    .build();
     }

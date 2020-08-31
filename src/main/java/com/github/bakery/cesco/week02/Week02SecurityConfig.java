@@ -14,7 +14,7 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
  *  Custom AuthenticationProvider를 생성하여 Week02UserDetailsService의 유저를 생성하기
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@EnableWebSecurity
+//@EnableWebSecurity
 public class Week02SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /*
