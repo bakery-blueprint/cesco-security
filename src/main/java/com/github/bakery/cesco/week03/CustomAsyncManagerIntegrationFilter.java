@@ -5,9 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.async.CallableProcessingInterceptor;
+import org.springframework.web.context.request.async.WebAsyncManager;
+import org.springframework.web.context.request.async.WebAsyncUtils;
 
 import javax.servlet.*;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.Callable;
 
 @Slf4j
@@ -18,9 +21,11 @@ public class CustomAsyncManagerIntegrationFilter implements Filter, CallableProc
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-//        final WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
-//        asyncManager.setTaskExecutor(asyncTaskExecutor);
-//        asyncManager.
+        final WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
+        asyncManager.setTaskExecutor(asyncTaskExecutor);
+        Optional.ofNullable(asyncManager.getCallableInterceptor(this.getClass().getSimpleName()))
+                .ifPresentOrElse(interceptor -> {}, () -> asyncManager.registerCallableInterceptor(this.getClass().getSimpleName(), this));
+        chain.doFilter(request, response);
     }
 
     public <T> void beforeConcurrentHandling(NativeWebRequest request, Callable<T> task) throws Exception {
