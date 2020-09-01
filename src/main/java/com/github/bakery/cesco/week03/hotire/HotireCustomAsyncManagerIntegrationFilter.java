@@ -1,4 +1,4 @@
-package com.github.bakery.cesco.week03;
+package com.github.bakery.cesco.week03.hotire;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.concurrent.Callable;
 
 @Slf4j
 @RequiredArgsConstructor
-public class CustomAsyncManagerIntegrationFilter implements Filter, CallableProcessingInterceptor {
+public class HotireCustomAsyncManagerIntegrationFilter implements Filter, CallableProcessingInterceptor {
 
     private final AsyncTaskExecutor asyncTaskExecutor;
 
