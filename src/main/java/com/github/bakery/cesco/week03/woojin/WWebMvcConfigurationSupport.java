@@ -13,6 +13,8 @@ public class WWebMvcConfigurationSupport extends WebMvcConfigurationSupport {
         taskExecutor.setCorePoolSize(5);
         taskExecutor.initialize();
         configurer.setTaskExecutor(taskExecutor);
+
+        configurer.registerCallableInterceptors(new LoggingCallableProcessingInterceptor());
     }
 
 }
