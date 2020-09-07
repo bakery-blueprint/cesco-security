@@ -32,14 +32,14 @@ public class LoggingCallableProcessingInterceptor implements CallableProcessingI
     public <T> Object handleTimeout(NativeWebRequest request, Callable<T> task) throws Exception {
         log.info("===== handleTimeout =====");
         log.info("request: {}, task: {}", request, task);
-        return null;
+        return RESULT_NONE;
     }
 
     @Override
     public <T> Object handleError(NativeWebRequest request, Callable<T> task, Throwable t) throws Exception {
         log.info("===== handleError =====");
         log.info("request: {}, task: {}", request, task);
-        return null;
+        return RESULT_NONE;
     }
 
     @Override
