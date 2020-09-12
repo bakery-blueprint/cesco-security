@@ -1,6 +1,5 @@
 package com.github.bakery.cesco.week03;
 
-import com.github.bakery.cesco.week01.Role;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.github.bakery.cesco.week01.Role;
+import com.github.bakery.cesco.week04.LocalMapSecurityContextRepository;
 
 //@Order(0)
 @Configuration
@@ -31,6 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .mvcMatchers("/admin").hasRole("ADMIN")
             .anyRequest()
             .authenticated();
+
+        http.securityContext()
+            .securityContextRepository(new LocalMapSecurityContextRepository());
 
         http.formLogin();
         http.httpBasic();
