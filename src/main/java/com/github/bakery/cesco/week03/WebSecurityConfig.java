@@ -12,6 +12,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.github.bakery.cesco.week01.Role;
+import com.github.bakery.cesco.week04.HotireHeaderWriter;
 import com.github.bakery.cesco.week04.LocalMapSecurityContextRepository;
 
 //@Order(0)
@@ -36,6 +37,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.securityContext()
             .securityContextRepository(new LocalMapSecurityContextRepository());
+
+        http.headers()
+            .addHeaderWriter(new HotireHeaderWriter());
 
         http.formLogin();
         http.httpBasic();
