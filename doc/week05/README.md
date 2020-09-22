@@ -27,10 +27,6 @@ LogoutConfigurer.createLogoutFilter() 시점에 생성한다.
 LogoutConfigurer.addLogoutHandlers 할 때 마다 logoutHandlers에 추가하고 createLogoutFilter() 호출할 때 주입해준다.
 
 
-### 과제 
-
-- Custom LogoutHandler 를 만들어보자.
-
 ## UsernamePasswordAuthenticationFilter
 
 user가 입력한 id / password를 통해 UsernamePasswordAuthenticationToken 생성하고 인증을 시도한다.
@@ -61,3 +57,20 @@ username:password 를 base64로 인코딩하는 방식이다.
 
 RequestCache 구현체로 HttpSessionRequestCache를 사용한다. 
  
+ 
+## SecurityContextHolderAwareRequestFilter
+
+Servlet 3.1 spec 구현체
+
+## AnonymousAuthenticationFilter
+
+익명 사용자를 처리하는 Filter
+
+AnonymousAuthenticationFilter는 AnonymousAuthenticationToken 사용한다.
+
+AnonymousAuthenticationToken에는 설정된 값을 넣어준다. 
+
+
+## 과제 
+ - Custom LogoutHandler 를 만들어보자.
+ - CustomAnonymousAuthenticationFilter를 사용해서 CustomAnonymousAuthenticationToken를 사용해보자.
