@@ -18,4 +18,6 @@ Composite은 Handler의 모음이다.
 
 ### 과제 
 
-Custom LogoutHandler를 만들어보자.
+- Custom LogoutHandler 를 만들어보자.
+
+
