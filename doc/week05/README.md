@@ -33,5 +33,7 @@ LogoutConfigurer.addLogoutHandlers 할 때 마다 logoutHandlers에 추가하고
 
 ## UsernamePasswordAuthenticationFilter
 
+user가 입력한 id / password를 통해 UsernamePasswordAuthenticationToken 생성하고 인증을 시도한다.
 
+기본적으로 provider 중 Dao를 사용한다. 또한 Dao는 UserDetailsService를 사용한다.
 
