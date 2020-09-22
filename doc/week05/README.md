@@ -37,3 +37,6 @@ user가 입력한 id / password를 통해 UsernamePasswordAuthenticationToken �
 
 기본적으로 provider 중 Dao를 사용한다. 또한 Dao는 UserDetailsService를 사용한다.
 
+## DefaultLoginPageGeneratingFilter (+ logout)
+
+기본 login / logout page를 만들어주는 filter이다. 
