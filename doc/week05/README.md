@@ -39,4 +39,21 @@ user가 입력한 id / password를 통해 UsernamePasswordAuthenticationToken �
 
 ## DefaultLoginPageGeneratingFilter (+ logout)
 
-기본 login / logout page를 만들어주는 filter이다. 
+기본 login / logout page를 만들어주는 filter이다. custom한걸 추가하면 사라진다.
+
+## BasicAuthenticationFilter
+
+Http Basic 인증을 지원하는 Filter이다. 
+
+요청 헤더에 Authorization: Basic dkfjdklfjdlfjldjl
+
+username:password 를 base64로 인코딩하는 방식이다.
+
+보안에 취약하기 때문에 Https 사용 권장한다.
+
+마찬가지로 UsernamePasswordAuthenticationToken를 사용해서 한다.
+
+차이점은 BasicAuthenticationFilter는 statusless하다.
+
+
+ 
