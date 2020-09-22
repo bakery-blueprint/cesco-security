@@ -55,5 +55,9 @@ username:password 를 base64로 인코딩하는 방식이다.
 
 차이점은 BasicAuthenticationFilter는 statusless하다.
 
+## RequestCacheAwareFilter
 
+현재 요청과 관련이 있는 캐시된 요청이 있는지 찾아서 적용하는 필터이다.
+
+RequestCache 구현체로 HttpSessionRequestCache를 사용한다. 
  
