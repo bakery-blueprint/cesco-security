@@ -2,7 +2,7 @@
 
 ## LogoutFilter 
 
-기본전략으로 SimpleUrlLogoutSuccessHandler 사용한다. 
+LogoutSuccessHandler 구현체로 SimpleUrlLogoutSuccessHandler 사용한다. 
 
 ~~~java 
 if (requiresLogout(request, response)) {
