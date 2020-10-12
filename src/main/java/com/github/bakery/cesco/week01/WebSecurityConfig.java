@@ -2,6 +2,9 @@ package com.github.bakery.cesco.week01;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -9,9 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-//@Order(0)
+@Order(Ordered.HIGHEST_PRECEDENCE)
 //@Configuration
 //@EnableWebSecurity
+@Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
