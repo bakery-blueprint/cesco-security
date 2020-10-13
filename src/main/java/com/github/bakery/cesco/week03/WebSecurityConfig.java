@@ -1,5 +1,7 @@
 package com.github.bakery.cesco.week03;
 
+import java.util.UUID;
+
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -12,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.github.bakery.cesco.week01.Role;
 import com.github.bakery.cesco.week04.HotireHeaderWriter;
 import com.github.bakery.cesco.week04.LocalMapSecurityContextRepository;
+import com.github.bakery.cesco.week05.CustomAnonymousAuthenticationFilter;
+import com.github.bakery.cesco.week05.CustomLoggingLogoutHandler;
 
 //@Order(0)
 //@Configuration
@@ -39,6 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers()
             .addHeaderWriter(new HotireHeaderWriter());
 
+        http.logout().addLogoutHandler(new CustomLoggingLogoutHandler());
+        http.anonymous()
+            .authenticationFilter(new CustomAnonymousAuthenticationFilter(UUID.randomUUID().toString()));
         http.formLogin();
         http.httpBasic();
         http.csrf().disable();
