@@ -63,4 +63,6 @@ AuthenticationPrincipalArgumentResolver을 통해 주입받는다.
 - 과제 Custom Annoation을 만들어보자. 익명 사용자일 경우 특정 UserAccount을 사용해보자. CurrentUser
 
 
+## Security-data
 
+놀랍게도 ... Query문에 principal을 넣어준다.. 생략할듯..
