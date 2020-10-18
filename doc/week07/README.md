@@ -12,4 +12,6 @@ JWT에서 사용 하면 좋다.
 
 - securedEnabled : @Secured
 
-- jsr250Enabled : 
+- jsr250Enabled : @RolesAllowed
+
+- prePostEnabled: 
