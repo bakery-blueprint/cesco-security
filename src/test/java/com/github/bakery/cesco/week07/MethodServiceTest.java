@@ -21,7 +21,7 @@ class MethodServiceTest {
     private final AuthenticationManager authenticationManager;
 
     @Test
-    void service() {
+    void secured() {
         // given
         final UserDetails userDetails = mock(UserDetails.class);
         final String password = "123";
@@ -31,6 +31,6 @@ class MethodServiceTest {
         authenticationManager.authenticate(token);
 
         // then
-        methodService.service();
+        methodService.secured();
     }
 }
