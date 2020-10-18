@@ -54,7 +54,11 @@ MethodSecurityMetadataSourceAdvisor을 Bean으로 등록한다.
 
 
 
+## AuthenticationPrincipal
 
+Custom Adaccount을 받을 수 있다. 다만 extends User를 해야한다.
+
+AuthenticationPrincipalArgumentResolver을 통해 주입받는다. 
 
 
 

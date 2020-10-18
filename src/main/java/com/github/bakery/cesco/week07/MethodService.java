@@ -12,7 +12,6 @@ public class MethodService {
 
     @Secured("ROLE_USER")
     public void secured() {
-        System.out.println("");
     }
 
     @RolesAllowed("ROLE_USER")
