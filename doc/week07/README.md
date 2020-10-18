@@ -60,7 +60,7 @@ Custom Adaccount을 받을 수 있다. 다만 extends User를 해야한다.
 
 AuthenticationPrincipalArgumentResolver을 통해 주입받는다. 
 
-- 과제 Custom Annoation을 만들어보자. 익명 사용자일 경우 특정 UserAccount을 사용해보자.
+- 과제 Custom Annoation을 만들어보자. 익명 사용자일 경우 특정 UserAccount을 사용해보자. CurrentUser
 
 
 
