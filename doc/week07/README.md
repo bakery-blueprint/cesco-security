@@ -14,4 +14,6 @@ JWT에서 사용 하면 좋다.
 
 - jsr250Enabled : @RolesAllowed
 
-- prePostEnabled: 
+- prePostEnabled: @PreAuthorize / @PostAuthorize 
+
+: parameter 검사 및 returnObject 검사 등 추가적인 기능을 사용할 수 있다. 
