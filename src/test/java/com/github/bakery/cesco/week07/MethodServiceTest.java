@@ -20,4 +20,5 @@ class MethodServiceTest {
         // then
         methodService.secured();
     }
+
 }
