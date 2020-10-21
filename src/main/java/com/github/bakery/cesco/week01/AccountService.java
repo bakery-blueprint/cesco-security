@@ -1,14 +1,16 @@
 package com.github.bakery.cesco.week01;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
+import javax.annotation.PostConstruct;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
+import com.github.bakery.cesco.week07.UserAccount;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -19,11 +21,7 @@ public class AccountService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         return accountRepository.findByUsername(username)
-                                .map(account -> User.builder()
-                                                    .username(account.getUsername())
-                                                    .password(account.getPassword())
-                                                    .roles(account.getRole().name())
-                                                    .build())
+                                .map(UserAccount::new)
                                 .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
